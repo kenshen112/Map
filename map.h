@@ -59,77 +59,89 @@ using namespace custom
  *MAP:ITERATOR
  *The iterator for a map 
  *****************************************************/
-template <class T>
-   class map <T> :: iterator
-{
-   //trick to this is that basically all of the methods just call
-   // the identical method in the BST iterator
-  private:
-   typename BST <T> :: iterator bsit; // bsit, binary search iterator
+   template <class T>
+      class map <T> :: iterator
+   {
+      //trick to this is that basically all of the methods just call
+      // the identical method in the BST iterator
+     private:
+      typename BST <T> :: iterator bsit; // bsit, binary search iterator
+      
+     public:
+      //constructors
+      iterator()
+      {
+         bsit();
+      }
+      
+      iterator(BST <T> :: iterator it)
+      {
+         this->bsit = it;
+      }
+
+         
+      iterator(iterator it)
+      {
+         this->bsit = it.bsit;
+      }
+      
+      //operators: =, ++, --, *, ==, !=
+      iterator operator = (const iterator &rhs)
+         {
+            this->bsit = rhs.bsit;
+            return *this;
+         }
+      
+      
+      /**************************
+       * Increment
+       * going up
+       ********************/
+      iterator operator ++ ()
+      {
+         bsit++;
+         return *this;
+      }
+
+      /*********************
+       * Decrement
+       * going down
+       ********************/
+      iterator operator -- ()
+      {
+         bsit--;
+         return *this;
+      }
    
-  public:
-   //constructors
-   iterator();
-   iterator(rhs:BST<T>::iterator);
-   iterator(rhs:iterator);
+      /*****************
+       * Dereference operator
+       * to get to the actual data
+       ***************/
+      T& operator*()
+      {
+         return *bsit;
+      }
 
-   //operators: =, ++, --, *, ==, !=
-   iterator operator = (const iterator &rhs)
-   {
-      this->bsit = rhs.bsit;
-      return *this;
-   }
+      /******************************
+       *Equvalence operator
+       * are two iterators pointing to the same thing
+       *****************************/
+      bool operator == (const iterator it)
+      {
+         return this->bsit == it.bsit;
+      }
+
+      /**************************************
+       * NOT equals operator
+       * do two iterators point to different things
+       *************************************/
+      bool operator != (const iterator it)
+      {
+         return this->bsit != it.bsit;
+      }
    
 
-   /**************************
-    * Increment
-    * going up
-    ********************/
-   iterator operator ++ ()
-   {
-      bsit++;
-      return *this;
    }
-
-   /*********************
-    * Decrement
-    * going down
-    ********************/
-   iterator operator -- ()
-   {
-      bsit--;
-      return *this;
-   }
-   
-   /*****************
-    * Dereference operator
-    * to get to the actual data
-    ***************/
-   T& operator*()
-   {
-      return *bsit;
-   }
-
-   /******************************
-    *Equvalence operator
-    * are two iterators pointing to the same thing
-    *****************************/
-   bool operator == (const iterator it)
-   {
-      return this->bsit == it.bsit;
-   }
-
-   /**************************************
-    * NOT equals operator
-    * do two iterators point to different things
-    *************************************/
-   bool operator != (const iterator it)
-   {
-      return this->bsit != it.bsit;
-   }
-   
-
-}
 
 
 
