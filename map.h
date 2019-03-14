@@ -16,35 +16,35 @@
 
 using namespace custom { //not sure if we need the namespace custom?
 
-template <class T>
-   class map{
-
-  private:
-   BST bst;
-
-  public:
-   map();
-   map operator=(const map & rhs);
-   ~map();
-
-   int size();
-   bool empty();
-   
-   void clear();
-   V access(K k);
-   void insert(K k, V v);
-   void insert(Pair);   
-   class iterator;
-
-   iterator find(K k);
-   iterator begin();
-   iterator end();
-
-};
+   template <class K, class V>
+      class map{
+      
+     private:
+      BST bst;
+      
+     public:
+      map();
+      map operator=(const map & rhs);
+      ~map();
+      
+      int size();
+      bool empty();
+      
+      void clear();
+      V access(K k);
+      void insert(K k, V v);
+      void insert(Pair);   
+      class iterator;
+      
+      iterator find(K k);
+      iterator begin();
+      iterator end();
+      
+   };
    
 /*****************************************************
- * 
- * 
+ *      
+ *      
  * 
  *****************************************************/
 
