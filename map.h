@@ -21,7 +21,7 @@ using namespace custom
    {
       
      private:
-      BST bst; //not sure how to do this one. They want it as a member variable.
+      BST <pair<K, V>>bst; //not sure how to do this one. They want it as a member variable.
       //I'll need to read up some more on exactly how they want that done. 
       
      public:
