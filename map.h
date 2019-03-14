@@ -9,7 +9,6 @@
 *    Ken Smith
 *    Tim O'Barr
 ************************************************************************/
-//don't forget to include the BST class when we are done with it!
 #include "pair.h"
 #ifndef MAP_H
 #define MAP_H
@@ -20,20 +19,31 @@ using namespace custom { //not sure if we need the namespace custom?
       class map{
       
      private:
-      BST bst;
+      BST bst; //not sure how to do this one. They want it as a member variable.
+      //I'll need to read up some more on exactly how they want that done. 
       
      public:
+      //default constructor
       map();
-      map operator=(const map & rhs);
+      //copy constructor
+      map(const map <K, V> & rhs);
+      //assignment operator
+      map <K, V> & operator=(const map <K, V> & rhs);
+      //destructor
       ~map();
       
-      int size();
-      bool empty();
+      int size() const;
+      bool empty() const;
       
       void clear();
-      V access(K k);
-      void insert(K k, V v);
-      void insert(Pair);   
+      
+      //access functions
+      V & operator[] (const K & k) throw(const char *);
+      V operator[] (const K & k) const throw(const char *);
+      
+      void insert(const K & k, const V & v) throw(const char *);
+      void insert(const pair <K, V> & input) throw(const char *);   
+
       class iterator;
       
       iterator find(K k);
@@ -43,8 +53,8 @@ using namespace custom { //not sure if we need the namespace custom?
    };
    
 /*****************************************************
- *      
- *      
+ *
+ *
  * 
  *****************************************************/
 
