@@ -13,10 +13,12 @@
 #ifndef MAP_H
 #define MAP_H
 
-using namespace custom { //not sure if we need the namespace custom?
+using namespace custom
+{ //not sure if we need the namespace custom? //I think yes, we are still using our own classes
 
    template <class K, class V>
-      class map{
+      class map
+   {
       
      private:
       BST bst; //not sure how to do this one. They want it as a member variable.
@@ -45,6 +47,7 @@ using namespace custom { //not sure if we need the namespace custom?
       void insert(const pair <K, V> & input) throw(const char *);   
 
       class iterator;
+
       
       iterator find(K k);
       iterator begin();
@@ -53,11 +56,37 @@ using namespace custom { //not sure if we need the namespace custom?
    };
    
 /*****************************************************
- *
- *
- * 
+ *MAP:ITERATOR
+ *The iterator for a map 
  *****************************************************/
+template <class T>
+   class map <T> :: iterator
+{
+   //trick to this is that basically all of the methods just call
+   // the identical method in the BST iterator
+  private:
+   typename BST <T> :: iterator bsit; // bsit, binary search iterator
+   
+  public:
+   //constructors
+   iterator();
+   iterator(rhs:BST<T>::iterator);
+   iterator(rhs:iterator);
 
+   //operators: =, ++, --, *, ==, !=
+   iterator operator = (const iterator &rhs);
+   iterator operator ++ ();
+   iterator operator -- ();
+   T& operator*();
+   bool operator == (const iterator &rhs);
+   bool operator != (const iterator &rhs);
+   
+
+}
+
+
+
+   
 }
 #endif // MAP_H
 
