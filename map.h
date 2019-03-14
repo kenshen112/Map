@@ -74,12 +74,59 @@ template <class T>
    iterator(rhs:iterator);
 
    //operators: =, ++, --, *, ==, !=
-   iterator operator = (const iterator &rhs);
-   iterator operator ++ ();
-   iterator operator -- ();
-   T& operator*();
-   bool operator == (const iterator &rhs);
-   bool operator != (const iterator &rhs);
+   iterator operator = (const iterator &rhs)
+   {
+      this->bsit = rhs.bsit;
+      return *this;
+   }
+   
+
+   /**************************
+    * Increment
+    * going up
+    ********************/
+   iterator operator ++ ()
+   {
+      bsit++;
+      return *this;
+   }
+
+   /*********************
+    * Decrement
+    * going down
+    ********************/
+   iterator operator -- ()
+   {
+      bsit--;
+      return *this;
+   }
+   
+   /*****************
+    * Dereference operator
+    * to get to the actual data
+    ***************/
+   T& operator*()
+   {
+      return *bsit;
+   }
+
+   /******************************
+    *Equvalence operator
+    * are two iterators pointing to the same thing
+    *****************************/
+   bool operator == (const iterator it)
+   {
+      return this->bsit == it.bsit;
+   }
+
+   /**************************************
+    * NOT equals operator
+    * do two iterators point to different things
+    *************************************/
+   bool operator != (const iterator it)
+   {
+      return this->bsit != it.bsit;
+   }
    
 
 }
