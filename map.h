@@ -23,6 +23,8 @@ using namespace custom
      private:
       BST <pair<K, V>>bst; //not sure how to do this one. They want it as a member variable.
       //I'll need to read up some more on exactly how they want that done. 
+
+	  int numElements; // we can either use this or just call BST'S size, Tim.
       
      public:
       //default constructor
@@ -34,7 +36,10 @@ using namespace custom
       //destructor
       ~map();
       
-      int size() const;
+	  int size() const
+	  {
+		  return numElements;
+	  }
       bool empty() const;
       
       void clear();
