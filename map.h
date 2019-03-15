@@ -15,30 +15,35 @@
 #define MAP_H
 
 using namespace custom;
- //not sure if we need the namespace custom? //I think yes, we are still using our own classes
 
    template <class K, class V>
       class map
    {
       
      private:
-      BST <pair<K, V>> *bst; //not sure how to do this one. They want it as a member variable.
-      //I'll need to read up some more on exactly how they want that done. 
+      BST <pair<K, V>> *bst;
 
 	  int numElements; // we can either use this or just call BST'S size, Tim.
       
      public:
       //default constructor, all constructor's should be inline in C++ Tim
-		 map()
-		 {
-			 bst = nullptr;
-			 numElements = 0;
-		 }
-
-		 //copy constructor
-		 map(const map <K, V> & rhs);
+          map()
+          {
+             bst = nullptr;
+             numElements = 0;
+          }
+      //copy constructor
+          map(const map <K, V> & rhs)
+          {
+             bst = rhs.bst;
+          }
       //assignment operator
-      map <K, V> & operator=(const map <K, V> & rhs);
+          map <K, V> & operator=(const map <K, V> & rhs)
+          {
+             bst = rhs.bst;
+             
+             return *this;
+          }
       //destructor
 	  ~map()
 	  {
@@ -56,21 +61,24 @@ using namespace custom;
 		  return numElements == 0;
 	  }
       
-      void clear();
+          void clear()
+          {
+             bst.clear();
+          }
       
-      //access functions
-      V & operator[] (const K & k) throw(const char *);
-      V operator[] (const K & k) const throw(const char *);
-      
-      void insert(const K & k, const V & v) throw(const char *);
-      void insert(const pair <K, V> & input) throw(const char *);   
+       //access functions
+          V & operator[] (const K & k) throw(const char *);
+          V operator[] (const K & k) const throw(const char *);
+          
+          void insert(const K & k, const V & v) throw(const char *);
+          void insert(const pair <K, V> & input) throw(const char *);   
 
-      class iterator;
+          class iterator;
 
       
-      iterator find(K k);
-      iterator begin();
-      iterator end();
+          iterator find(K k);
+          iterator begin();
+          iterator end();
       
    };
    
@@ -78,7 +86,7 @@ using namespace custom;
  *MAP:ITERATOR
  *The iterator for a map 
  *****************************************************/
-   template <class T>
+template <class T> //T instead of K or V? -Jess
       class map <T> :: iterator
    {
       //trick to this is that basically all of the methods just call
@@ -158,9 +166,52 @@ using namespace custom;
       {
          return this->bsit != it.bsit;
       }
-   
-
+      
    }
+
+/*************************************
+ *ACCESS OPERATOR
+ *allows for random access
+ ************************************/
+template <class K, class V>
+V & Map::operator[] (const K & k) throw(const char *)
+{
+   //I don't have a good grasp on the pseudocode for these yet -Jess
+}
+
+/*************************************
+ *ACCESS OPERATOR CONST
+ *allows for random access
+ *************************************/
+template <class K, class V>
+   V Map::operator[] (const K & k) throw(const char *)
+{
+   //see above ^^
+}
+
+/*************************************
+ *INSERT with K,V
+ *inserts a new value with a key
+ ************************************/
+template <class K, class V>
+   void Map::insert(const K & k, const V & v) throw(const char *)
+{
+   //do we need 2 inserts? Maybe I read the book wrong -Jess
+}
+/************************************
+ *INSERT with pair <K, V>
+ *inserts a new value using a pair
+ ***********************************/
+template <class K, class V>
+   void Map::insert(const pair <K, V> & input) throw(const char *)
+{
+   Map::iterator *it = bst.find(input);//please make sure I got this right
+
+   if(it != nullptr)
+      *it = input;
+   else
+      bst.insert(input);
+}
 
 #endif // MAP_H
 
