@@ -23,7 +23,7 @@ using namespace custom;
      private:
       BST <pair<K, V>> *bst;
 
-	  int numElements; // we can either use this or just call BST'S size, Tim.
+      int numElements; // we can either use this or just call BST'S size, Tim.
       
      public:
       //default constructor, all constructor's should be inline in C++ Tim
@@ -47,9 +47,9 @@ using namespace custom;
       //destructor
 	  ~map()
 	  {
-		  bst = nullptr;
-		  numElements = 0;
-		  delete bst;
+             bst = nullptr;
+             numElements = 0;
+             delete bst;
 	  }
       
 	  int size() const
@@ -86,13 +86,13 @@ using namespace custom;
  *MAP:ITERATOR
  *The iterator for a map 
  *****************************************************/
-template <class T> //T instead of K or V? -Jess
-      class map <T> :: iterator
+template <class K, class V> //T instead of K or V? -Jess //whoops, you're right - Ken
+   class map <K, V> :: iterator
    {
       //trick to this is that basically all of the methods just call
       // the identical method in the BST iterator
      private:
-      typename BST <T> :: iterator bsit; // bsit, binary search iterator
+      typename BST <pair<K, V>> :: iterator bsit; // bsit, binary search iterator
       
      public:
       //constructors
@@ -101,13 +101,13 @@ template <class T> //T instead of K or V? -Jess
          bsit();
       }
       
-      iterator(BST <T> :: iterator it)
+      iterator(BST <pair<K, V>> :: iterator it)
       {
          this->bsit = it;
       }
 
          
-      iterator(iterator it)
+      iterator(const map<K, V>::iterator& it)
       {
          this->bsit = it.bsit;
       }
@@ -144,7 +144,7 @@ template <class T> //T instead of K or V? -Jess
        * Dereference operator
        * to get to the actual data
        ***************/
-      T& operator*()
+      pair<K, V>& operator*()
       {
          return *bsit;
       }
@@ -166,17 +166,18 @@ template <class T> //T instead of K or V? -Jess
       {
          return this->bsit != it.bsit;
       }
-      
-   }
+};
 
 /*************************************
  *ACCESS OPERATOR
  *allows for random access
  ************************************/
 template <class K, class V>
-V & Map::operator[] (const K & k) throw(const char *)
+V & map::operator[] (const K & k) throw(const char *)
 {
    //I don't have a good grasp on the pseudocode for these yet -Jess
+   //Maybe try just using a couple of the other methods we have,
+   //  perhaps a combination of find, insert, and the iterator dereference? - Ken
 }
 
 /*************************************
@@ -184,7 +185,7 @@ V & Map::operator[] (const K & k) throw(const char *)
  *allows for random access
  *************************************/
 template <class K, class V>
-   V Map::operator[] (const K & k) throw(const char *)
+   V map::operator[] (const K & k) throw(const char *)
 {
    //see above ^^
 }
@@ -194,18 +195,19 @@ template <class K, class V>
  *inserts a new value with a key
  ************************************/
 template <class K, class V>
-   void Map::insert(const K & k, const V & v) throw(const char *)
+   void map::insert(const K & k, const V & v) throw(const char *)
 {
    //do we need 2 inserts? Maybe I read the book wrong -Jess
+   //yes we do - Ken
 }
 /************************************
  *INSERT with pair <K, V>
  *inserts a new value using a pair
  ***********************************/
 template <class K, class V>
-   void Map::insert(const pair <K, V> & input) throw(const char *)
+   void map::insert(const pair <K, V> & input) throw(const char *)
 {
-   Map::iterator *it = bst.find(input);//please make sure I got this right
+   map::iterator *it = bst->find(input);//please make sure I got this right
 
    if(it != nullptr)
       *it = input;
