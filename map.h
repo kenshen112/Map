@@ -10,37 +10,51 @@
 *    Tim O'Barr
 ************************************************************************/
 #include "pair.h"
+#include "bst.h"
 #ifndef MAP_H
 #define MAP_H
 
-using namespace custom
-{ //not sure if we need the namespace custom? //I think yes, we are still using our own classes
+using namespace custom;
+ //not sure if we need the namespace custom? //I think yes, we are still using our own classes
 
    template <class K, class V>
       class map
    {
       
      private:
-      BST <pair<K, V>>bst; //not sure how to do this one. They want it as a member variable.
+      BST <pair<K, V>> *bst; //not sure how to do this one. They want it as a member variable.
       //I'll need to read up some more on exactly how they want that done. 
 
 	  int numElements; // we can either use this or just call BST'S size, Tim.
       
      public:
-      //default constructor
-      map();
-      //copy constructor
-      map(const map <K, V> & rhs);
+      //default constructor, all constructor's should be inline in C++ Tim
+		 map()
+		 {
+			 bst = nullptr;
+			 numElements = 0;
+		 }
+
+		 //copy constructor
+		 map(const map <K, V> & rhs);
       //assignment operator
       map <K, V> & operator=(const map <K, V> & rhs);
       //destructor
-      ~map();
+	  ~map()
+	  {
+		  bst = nullptr;
+		  numElements = 0;
+		  delete bst;
+	  }
       
 	  int size() const
 	  {
 		  return numElements;
 	  }
-      bool empty() const;
+	  bool empty() const
+	  {
+		  return numElements == 0;
+	  }
       
       void clear();
       
@@ -148,9 +162,5 @@ using namespace custom
 
    }
 
-
-
-   
-}
 #endif // MAP_H
 
