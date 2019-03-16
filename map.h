@@ -171,12 +171,21 @@ template <class K, class V>
  *allows for random access
  ************************************/
 template <class K, class V>
-V & map::operator[] (const K & k) throw(const char *)
+V & map<K, V>::operator[] (const K & k) throw(const char *)
 {
-	if (bst->find(k))
-	{
+	pair<K, V> keyFind;
+	
+	map::iterator it = bst->find(keyFind);
 
-  
+	if (it != NULL)
+	{
+		return it.second;
+	}
+
+	else
+	{
+		bst->insert(pair);
+		return bst->find(pair).second;
 	}
 }
 
@@ -185,7 +194,7 @@ V & map::operator[] (const K & k) throw(const char *)
  *allows for random access
  *************************************/
 template <class K, class V>
-   V map::operator[] (const K & k) throw(const char *)
+   V map<K, V>::operator[] (const K & k) throw(const char *)
 {
    //see above ^^
 }
@@ -195,7 +204,7 @@ template <class K, class V>
  *inserts a new value with a key
  ************************************/
 template <class K, class V>
-   void map::insert(const K & k, const V & v) throw(const char *)
+   void map<K, V>::insert(const K & k, const V & v) throw(const char *)
 {
    map::iterator *it = bst->find(k);
    
