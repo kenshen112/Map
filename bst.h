@@ -837,21 +837,28 @@ template <class T>
       } 
    }
    
-   template<class T>
-      typename BST<T>::iterator BST<T>::begin()
+   template<class T>   
+   typename BST<T>::iterator BST<T>::begin()
    {
+
+	   std::cerr << "Begin" << std::endl;
+
       if(root == nullptr)
       {
          return iterator(nullptr);
+		 std::cerr << "nullptr" << std::endl;
       }
       BNode <T> *pNew = root;
       
       while(pNew->pLeft)
       {
+		  std::cerr << "while Loop" << std::endl;
          pNew = pNew->pLeft;
          
       }
       
+	  std::cerr << "pNew" << std::endl;
+
       return iterator (pNew);
    }
    
@@ -871,6 +878,8 @@ v************************************************/
    {
       for (iterator it = begin(); it != nullptr; it++)
       {
+		  std::cerr << "for loop" << std::endl;
+
          if (*it == itemToFind)
          {
             return it;
