@@ -14,12 +14,8 @@
 #include "wordCount.h" // for wordCount() prototype
 #include "fstream"     // for ifstream
 using namespace std;
-<<<<<<< HEAD
 
-void readFile(custom::map <std::string, int> & , const std::string & );
-=======
 void readFile(custom::map <string, int> & counts, const string & fileName);
->>>>>>> 89cfe7f6ae3cf3e5f387fdd2e9fff13332a34bf4
 
 /*****************************************************
  * WORD COUNT
