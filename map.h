@@ -209,18 +209,18 @@ namespace custom
 	V & map<K, V>::operator[] (const K & k) throw(const char *)
 	{
 		pair<K, V> keyFind;
-
-		map::iterator *it = find(keyFind);
+                keyFind.first = k;
+		map<K, V>::iterator it = find(k);
 
 		if (it != nullptr)
 		{
-			return it->second();
+                   return it->second;
 		}
 
 		else
 		{
 			bst->insert(keyFind);
-			return find(keyFind).second();
+			return bst->find(keyFind).second;
 		}
 	}
 
@@ -256,7 +256,7 @@ namespace custom
 	template <class K, class V>
 	void map<K, V>::insert(const pair <K, V> & input) throw(const char *)
 	{
-		map::iterator *it = find(input);//please make sure I got this right
+		map::iterator *it = bst->find(input);//please make sure I got this right
 
 		if (it != nullptr)
 			*it = input;

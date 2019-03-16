@@ -56,7 +56,7 @@ void wordCount()
       //make a new pair
       thing.first = instruction;
       
-      *it = words.find(instruction);
+      it-.first = words.find(thing);
 
       if(it == nullptr)
       {
@@ -64,7 +64,7 @@ void wordCount()
       }
       else
       {
-         std::cout << "\t" << instruction << " : " << (*it).second << std::endl;
+         std::cout << "\t" << instruction << " : " << *it.second() << std::endl;
       }
       
       std::cout << "> ";
