@@ -239,7 +239,22 @@ namespace custom
    template <class K, class V>
       V map<K, V>::operator[] (const K & k) const throw(const char *)
    {
-      //see above ^^
+		  pair<K, V> keyFind;
+		  keyFind.first = k;
+		  map<K, V>::iterator *it;
+
+		  *it = find(k);
+
+		  if (it != nullptr)
+		  {
+			  return it->getBst().second;
+		  }
+
+		  else
+		  {
+			  bst->insert(keyFind);
+			  return find(keyFind.first).getBst().second;
+		  }
    }
    
    /*************************************
