@@ -9,6 +9,7 @@
  ************************************************************************/
 
 #include<string>
+#include "pair.h"
 #include "map.h"       // for MAP
 #include "wordCount.h" // for wordCount() prototype
 #include "fstream"     // for ifstream
@@ -43,11 +44,17 @@ void wordCount()
              << "> ";
    
    std::cin >> instruction;
+
+   pair<string, int> thing;
    
    while(instruction != "!")
    {
       typename::map<string, int>::iterator it;
-      it = find(instruction);
+
+      //make a new pair
+      thing.first = instruction;
+      
+      it = words.find(thing);
 
       if(it == NULL)
       {
