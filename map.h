@@ -170,7 +170,7 @@ template <class K, class V>
    template<class K, class V>
    typename map<K, V>::iterator map<K, V>::find(K k)
    {
-	   return iterator(bst->find(k));
+	   return bst->find(k);
    }
 
 
