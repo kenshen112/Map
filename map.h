@@ -38,7 +38,7 @@ using namespace custom;
              bst = rhs.bst;
           }
       //assignment operator
-          map <K, V> & operator=(const map <K, V> & rhs)
+          map & operator=(const map <K, V> & rhs)
           {
              bst = rhs.bst;
              
