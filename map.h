@@ -68,7 +68,7 @@ using namespace custom;
       
        //access functions
           V & operator[] (const K & k) throw(const char *);
-          V operator[] (const K & k) const throw(const char *);
+          V operator[] (const K & k) throw(const char *);
           
           void insert(const K & k, const V & v) throw(const char *);
           void insert(const pair <K, V> & input) throw(const char *);   
@@ -86,7 +86,7 @@ using namespace custom;
  *MAP:ITERATOR
  *The iterator for a map 
  *****************************************************/
-template <class K, class V> //T instead of K or V? -Jess //whoops, you're right - Ken
+template <class K, class V>
    class map <K, V> :: iterator
    {
       //trick to this is that basically all of the methods just call
@@ -97,11 +97,9 @@ template <class K, class V> //T instead of K or V? -Jess //whoops, you're right 
      public:
       //constructors
       iterator()
-      {
-         bsit();
-      }
+      {}
       
-      iterator(BST <pair<K, V>> :: iterator it)
+      iterator(typename BST <pair<K, V>>::iterator it)
       {
          this->bsit = it;
       }
@@ -173,7 +171,7 @@ template <class K, class V> //T instead of K or V? -Jess //whoops, you're right 
  *allows for random access
  ************************************/
 template <class K, class V>
-V & map<K, V>::operator[] (const K & k) throw(const char *)
+V & map::operator[] (const K & k) throw(const char *)
 {
 	if (bst->find(k))
 	{
@@ -187,7 +185,7 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
  *allows for random access
  *************************************/
 template <class K, class V>
- V map<K, V>::operator[] (const K & k) throw(const char *)
+   V map::operator[] (const K & k) throw(const char *)
 {
    //see above ^^
 }
@@ -197,10 +195,15 @@ template <class K, class V>
  *inserts a new value with a key
  ************************************/
 template <class K, class V>
-   void map<K, V>::insert(const K & k, const V & v) throw(const char *)
+   void map::insert(const K & k, const V & v) throw(const char *)
 {
-   //do we need 2 inserts? Maybe I read the book wrong -Jess
-   //yes we do - Ken
+   map::iterator *it = bst->find(k);
+   
+   if(it != nullptr)
+      *it = v;
+   else
+      bst.insert(k);
+   
 }
 /************************************
  *INSERT with pair <K, V>
