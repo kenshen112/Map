@@ -68,7 +68,7 @@ using namespace custom;
       
        //access functions
           V & operator[] (const K & k) throw(const char *);
-          V operator[] (const K & k) throw(const char *);
+          V operator[] (const K & k)const throw(const char *);
           
           void insert(const K & k, const V & v) throw(const char *);
           void insert(const pair <K, V> & input) throw(const char *);   
