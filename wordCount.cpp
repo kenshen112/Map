@@ -55,7 +55,7 @@ void wordCount()
       //make a new pair
       thing.first = instruction;
       
-      *it = words.find(thing);
+      *it.first() = words.find(thing);
 
       if(it == nullptr)
       {
