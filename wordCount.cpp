@@ -44,12 +44,12 @@ void wordCount()
    
    std::cin >> instruction;
    
-   while(instruction != '!')
+   while(instruction != "!")
    {
       typename::map<string, int>::iterator it;
       it = find(instruction);
 
-      if(it == nullptr)
+      if(it == NULL)
       {
          std::cout << "\t" << instruction << " : 0\n";
       }
