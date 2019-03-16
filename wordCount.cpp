@@ -14,7 +14,8 @@
 #include "wordCount.h" // for wordCount() prototype
 #include "fstream"     // for ifstream
 using namespace std;
-void readFile(map <string, int> & counts, const string & fileName);
+
+void readFile(custom::map <std::string, int> & , const std::string & );
 
 /*****************************************************
  * WORD COUNT
@@ -81,13 +82,12 @@ void readFile(map <string, int> & counts, const string & fileName)
       std::cout << "Error opening file " << fileName << std::endl;
       return;
    }
-
+   
    string word;
    
    while(fin >> word)
    {
       counts[word] += 1;
    }
-
    fin.close();
 }
