@@ -10,6 +10,7 @@
 
 #include "map.h"       // for MAP
 #include "wordCount.h" // for wordCount() prototype
+#include "fstream"     // for ifstream
 using namespace std;
 void readFile(map <string, Count> & counts, const string & fileName);
 
@@ -20,5 +21,65 @@ void readFile(map <string, Count> & counts, const string & fileName);
  *****************************************************/
 void wordCount()
 {
+   //i need to implement:
+   //a prompt
+   //a file reader
+   //     inserting into the map
+   //and interface to find and respond to a word search
 
+   map <string, int> words;
+
+   string fileName;
+
+   std::cout << "Whar is the filename to be counted? ";
+   std::cin >> filename;
+
+   readFile(words, fileName);
+
+   string instruction;
+
+   std::cout << "What word while frequency is to be found. Type ! when done\n"
+             << "> ";
+   
+   std::cin >> instruction;
+   
+   while(instruction != '!')
+   {
+      typename::map::iterator it;
+      it = find(instruction);
+
+      if(it == nullptr)
+      {
+         std::cout << "\t" << instruction << " : 0\n";
+      }
+      else
+      {
+         std::cout << "\t" << instruction << " : " << *it.second << std::endl;
+      }
+      
+      std::cout << "> ";
+      std::cin >> instruction;
+   }
+   
+}
+
+
+void readFile(map <string, Count> & counts, const string & fileName)
+{
+   ifstream fin(fileName);
+
+   if(fin.fail())
+   {
+      std::cout << "Error opening file " << fileName << std::endl;
+      return;
+   }
+
+   string word;
+   
+   while(fin >> word)
+   {
+      counts[word] += 1;
+   }
+
+   fin.close();
 }
