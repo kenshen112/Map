@@ -106,6 +106,11 @@ namespace custom
 		}
 
 
+		BST<custom::pair<K, V>> getBst()
+		{
+			return bsit;
+		}
+
 		iterator(const map<K, V>::iterator& it)
 		{
 			this->bsit = it.bsit;
