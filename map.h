@@ -97,11 +97,9 @@ template <class K, class V>
      public:
       //constructors
       iterator()
-      {
-         bsit();
-      }
+      {}
       
-      iterator(BST <pair<K, V>> :: iterator it)
+      iterator(typename BST <pair<K, V>>::iterator it)
       {
          this->bsit = it;
       }
@@ -185,7 +183,11 @@ template <class K, class V>
  *allows for random access
  *************************************/
 template <class K, class V>
-   V map<K, V>::operator[] (const K & k) throw(const char *)
+
+   V map<K, V>::operator[] (const K & k) throw(const char *
+
+
+
 {
    //see above ^^
 }
@@ -195,7 +197,11 @@ template <class K, class V>
  *inserts a new value with a key
  ************************************/
 template <class K, class V>
+
    void map<K, V>::insert(const K & k, const V & v) const throw(const char *)
+
+
+
 {
    map::iterator *it = bst->find(k);
    
