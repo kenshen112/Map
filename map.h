@@ -106,9 +106,9 @@ namespace custom
 		}
 
 
-		BST<custom::pair<K, V>> getBst()
+		pair<K, V>& getBst()
 		{
-			return bsit;
+			return *bsit;
 		}
 
 		iterator(const map<K, V>::iterator& it)
@@ -216,13 +216,13 @@ namespace custom
 
 		if (it != nullptr)
 		{
-                   return it->second;
+                   return it->getBst().second;
 		}
 
 		else
 		{
 			bst->insert(keyFind);
-			return bst->find(keyFind).second;
+			return find(keyFind).getBst().second;
 		}
 	}
 
