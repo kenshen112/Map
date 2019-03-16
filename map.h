@@ -137,7 +137,7 @@ template <class K, class V>
          bsit--;
          return *this;
       }
-   
+
       /*****************
        * Dereference operator
        * to get to the actual data
@@ -166,6 +166,14 @@ template <class K, class V>
       }
 };
 
+
+   template<class K, class V>
+   typename map<K, V>::iterator map<K, V>::find(K k)
+   {
+	   return iterator(bst->find(k));
+   }
+
+
 /*************************************
  *ACCESS OPERATOR
  *allows for random access
@@ -175,17 +183,17 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
 {
 	pair<K, V> keyFind;
 	
-	map::iterator *it = bst->find(keyFind);
+	map::iterator *it = find(keyFind);
 
 	if (it != nullptr)
 	{
-		return it.second;
+		return it->second();
 	}
 
 	else
 	{
            bst->insert(keyFind);
-           return bst->find(keyFind).second;
+           return find(keyFind).second();
 	}
 }
 
@@ -221,13 +229,14 @@ template <class K, class V>
 template <class K, class V>
    void map<K, V>::insert(const pair <K, V> & input) throw(const char *)
 {
-   map::iterator *it = bst->find(input);//please make sure I got this right
+   map::iterator *it = find(input);//please make sure I got this right
 
    if(it != nullptr)
       *it = input;
    else
       bst.insert(input);
 }
+
 
 #endif // MAP_H
 
