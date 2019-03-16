@@ -210,7 +210,9 @@ namespace custom
 	{
 		pair<K, V> keyFind;
                 keyFind.first = k;
-		map<K, V>::iterator it = find(k);
+				map<K, V>::iterator *it;
+				
+				*it = find(k);
 
 		if (it != nullptr)
 		{
