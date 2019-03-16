@@ -184,8 +184,8 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
 
 	else
 	{
-		bst->insert(pair);
-		return bst->find(pair).second;
+           bst->insert(keyFind);
+           return bst->find(keyFind).second;
 	}
 }
 
