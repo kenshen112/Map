@@ -12,6 +12,9 @@ private:
 
 public:
 	T data;
+	bool red;
+	bool black;
+	bool parent;
 	BNode <T> *pParent;
 	BNode <T> *pLeft;
 	BNode <T> *pRight;
