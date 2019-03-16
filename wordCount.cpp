@@ -56,7 +56,7 @@ void wordCount()
       //make a new pair
       thing.first = instruction;
       
-	  it->getBst().first() = words.find(thing);
+	  it->getBst().first = words.find(thing);
 
       if(it == nullptr)
       {
