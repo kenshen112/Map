@@ -14,7 +14,7 @@
 #include "wordCount.h" // for wordCount() prototype
 #include "fstream"     // for ifstream
 using namespace std;
-void readFile(map <string, int> & counts, const string & fileName);
+void readFile(custom::map <string, int> & counts, const string & fileName);
 
 /*****************************************************
  * WORD COUNT
@@ -29,7 +29,7 @@ void wordCount()
    //     inserting into the map
    //and interface to find and respond to a word search
 
-   map <string, int> words;
+   custom::map <string, int> words;
 
    string fileName;
 
@@ -49,14 +49,14 @@ void wordCount()
    
    while(instruction != "!")
    {
-      typename::map<string, int>::iterator it;
+      custom::map<string, int>::iterator *it;
 
       //make a new pair
       thing.first = instruction;
       
-      it = words.find(thing);
+      *it = words.find(thing);
 
-      if(it == NULL)
+      if(it == nullptr)
       {
          std::cout << "\t" << instruction << " : 0\n";
       }
@@ -72,7 +72,7 @@ void wordCount()
 }
 
 
-void readFile(map <string, int> & counts, const string & fileName)
+void readFile(custom::map <string, int> & counts, const string & fileName)
 {
    ifstream fin(fileName);
 
