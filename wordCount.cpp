@@ -8,11 +8,12 @@
  *    This program will implement the wordCount() function
  ************************************************************************/
 
+#include<string>
 #include "map.h"       // for MAP
 #include "wordCount.h" // for wordCount() prototype
 #include "fstream"     // for ifstream
 using namespace std;
-void readFile(map <string, Count> & counts, const string & fileName);
+void readFile(map <string, int> & counts, const string & fileName);
 
 /*****************************************************
  * WORD COUNT
@@ -32,7 +33,7 @@ void wordCount()
    string fileName;
 
    std::cout << "Whar is the filename to be counted? ";
-   std::cin >> filename;
+   std::cin >> fileName;
 
    readFile(words, fileName);
 
@@ -45,7 +46,7 @@ void wordCount()
    
    while(instruction != '!')
    {
-      typename::map::iterator it;
+      typename::map<string, int>::iterator it;
       it = find(instruction);
 
       if(it == nullptr)
@@ -64,7 +65,7 @@ void wordCount()
 }
 
 
-void readFile(map <string, Count> & counts, const string & fileName)
+void readFile(map <string, int> & counts, const string & fileName)
 {
    ifstream fin(fileName);
 

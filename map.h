@@ -97,11 +97,9 @@ template <class K, class V> //T instead of K or V? -Jess //whoops, you're right 
      public:
       //constructors
       iterator()
-      {
-         bsit();
-      }
+      {}
       
-      iterator(BST <pair<K, V>> :: iterator it)
+      iterator(typename BST <pair<K, V>>::iterator it)
       {
          this->bsit = it;
       }
@@ -173,7 +171,7 @@ template <class K, class V> //T instead of K or V? -Jess //whoops, you're right 
  *allows for random access
  ************************************/
 template <class K, class V>
-V & map::operator[] (const K & k) throw(const char *)
+   V & map<K, V>::operator[] (const K & k) throw(const char *)
 {
    //I don't have a good grasp on the pseudocode for these yet -Jess
    //Maybe try just using a couple of the other methods we have,
@@ -185,7 +183,7 @@ V & map::operator[] (const K & k) throw(const char *)
  *allows for random access
  *************************************/
 template <class K, class V>
-   V map::operator[] (const K & k) throw(const char *)
+   V map<K, V>::operator[] (const K & k)const throw(const char *)
 {
    //see above ^^
 }
@@ -195,7 +193,7 @@ template <class K, class V>
  *inserts a new value with a key
  ************************************/
 template <class K, class V>
-   void map::insert(const K & k, const V & v) throw(const char *)
+   void map<K, V>::insert(const K & k, const V & v) throw(const char *)
 {
    //do we need 2 inserts? Maybe I read the book wrong -Jess
    //yes we do - Ken
@@ -205,7 +203,7 @@ template <class K, class V>
  *inserts a new value using a pair
  ***********************************/
 template <class K, class V>
-   void map::insert(const pair <K, V> & input) throw(const char *)
+   void map<K, V>::insert(const pair <K, V> & input) throw(const char *)
 {
    map::iterator *it = bst->find(input);//please make sure I got this right
 
