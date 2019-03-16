@@ -21,7 +21,7 @@ using namespace custom;
    {
       
      private:
-      BST <pair<K, V>> *bst;
+      BST <custom::pair<K, V>> *bst;
 
       int numElements; // we can either use this or just call BST'S size, Tim.
       
@@ -92,14 +92,14 @@ template <class K, class V>
       //trick to this is that basically all of the methods just call
       // the identical method in the BST iterator
      private:
-      typename BST <pair<K, V>> :: iterator bsit; // bsit, binary search iterator
+      typename BST <custom::pair<K, V>> :: iterator bsit; // bsit, binary search iterator
       
      public:
       //constructors
       iterator()
       {}
       
-      iterator(typename BST <pair<K, V>>::iterator it)
+      iterator(typename BST <custom::pair<K, V>>::iterator it)
       {
          this->bsit = it;
       }

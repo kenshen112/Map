@@ -45,7 +45,7 @@ void wordCount()
    
    std::cin >> instruction;
 
-   pair<string, int> thing;
+   custom::pair<string, int> thing;
    
    while(instruction != "!")
    {
@@ -62,7 +62,7 @@ void wordCount()
       }
       else
       {
-         std::cout << "\t" << instruction << " : " << *it.second << std::endl;
+         std::cout << "\t" << instruction << " : " << *it.second() << std::endl;
       }
       
       std::cout << "> ";
