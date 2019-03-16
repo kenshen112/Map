@@ -222,7 +222,7 @@ namespace custom
 		else
 		{
 			bst->insert(keyFind);
-			return find(keyFind).getBst().second;
+			return find(keyFind.second).getBst().second;
 		}
 	}
 

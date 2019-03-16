@@ -64,7 +64,7 @@ void wordCount()
       }
       else
       {
-         std::cout << "\t" << instruction << " : " << (*it).second << std::endl;
+         std::cout << "\t" << instruction << " : " << it->getBst().second << std::endl;
       }
       
       std::cout << "> ";
