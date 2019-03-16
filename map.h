@@ -179,7 +179,12 @@ namespace custom
 	template<class K, class V>
 	typename map<K, V>::iterator map<K, V>::find(K k)
 	{
-		return bst->find(k);
+           pair<K, V> keyFind;
+           keyFind.first = k;
+           map<K, V>::iterator it = bst->find(keyFind);
+           
+           
+           return it;
 	}
 
 	/************************************
