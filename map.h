@@ -180,10 +180,14 @@ namespace custom
    template<class K, class V>
       typename map<K, V>::iterator map<K, V>::find(K k)
    {
+      std::cerr << "we are in find\n";
       pair<K, V> keyFind;
+
       keyFind.first = k;
-      map<K, V>::iterator it = bst->find(keyFind);
+      std::cerr << "we made a pair, just wo se could search in bst for it\n";
       
+      map<K, V>::iterator it = bst->find(keyFind);
+      std::cerr << "we assigned a map iterator using bst's find function\n";
       
       return it;
    }
@@ -214,19 +218,24 @@ namespace custom
    template <class K, class V>
       V & map<K, V>::operator[] (const K & k) throw(const char *)
    {
+      std::cerr << "we are in the access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
       map<K, V>::iterator *it;
-      
+
+      std::cerr << "we are about to use find\n";
       *it = find(k);
+      std::cerr << "we used find and it didn't break\n";
       
       if (it != nullptr)
       {
+         std::cerr << "we found something!\n";
          return it->getBst().second;
       }
       
       else
       {
+         std::cerr << "didn't find it, inserting it\n";
          bst->insert(keyFind);
          return find(keyFind.first).getBst().second;
       }
@@ -239,22 +248,25 @@ namespace custom
    template <class K, class V>
       V map<K, V>::operator[] (const K & k) const throw(const char *)
    {
-		  pair<K, V> keyFind;
-		  keyFind.first = k;
-		  map<K, V>::iterator *it;
+      std::cerr << "we are in the access operator\n";
+      pair<K, V> keyFind;
+      keyFind.first = k;
+      map<K, V>::iterator *it;
 
-		  *it = find(k);
-
-		  if (it != nullptr)
-		  {
-			  return it->getBst().second;
-		  }
-
-		  else
-		  {
-			  bst->insert(keyFind);
-			  return find(keyFind.first).getBst().second;
-		  }
+      *it = find(k);
+      std::cerr << "we just used find and didn't break\n";
+      
+      if (it != nullptr)
+      {
+         std::cerr << "we found a thing!\n";
+         return it->getBst().second;
+      }
+      else
+      {
+         std::cerr << "we didn't find it, we are inserting\n";
+         bst->insert(keyFind);
+         return find(keyFind.first).getBst().second;
+      }
    }
    
    /*************************************
@@ -264,6 +276,7 @@ namespace custom
    template <class K, class V>
       void map<K, V>::insert(const K & k, const V & v) throw(const char *)
    {
+      std::cerr << "we are inserting having been given the key and the data\n";
       map::iterator *it = bst->find(k);
       
       if (it != nullptr)
@@ -281,6 +294,7 @@ namespace custom
    template <class K, class V>
       void map<K, V>::insert(const pair <K, V> & input) throw(const char *)
    {
+      std::cerr << "we are inserting having been given a pair\n";
       map::iterator *it = bst->find(input);//please make sure I got this right
       
       if (it != nullptr)

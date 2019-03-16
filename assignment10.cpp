@@ -153,15 +153,25 @@ void testAdd()
       // fill
       cout << "Fill with 10 values\n";
       m1[8]  = string("eight");    //               8
+      std::cerr << "added eight\n";
       m1[4]  = string("four");     //          +----+----+
+      std::cerr << "added four\n";
       m1[12] = string("twelve");   //          4         12
+      std::cerr << "added twelve\n";
       m1[2]  = string("two");      //       +--+--+   +--+--+
+      std::cerr << "added two\n";
       m1[6]  = string("six");      //       2     6   9     13
+      std::cerr << "added six\n";
       m1[9]  = string("nine");     //     +-+   +-+   +-+
+      std::cerr << "added nine\n";
       m1[13] = string("thirteen"); //     0     5       11
+      std::cerr << "added thirteen\n";
       m1[0]  = string("zero");
+      std::cerr << "added zero\n";
       m1[5]  = string("five");
+      std::cerr << "added five\n";
       m1[11] = string("eleven");
+      std::cerr << "added eleven\n";
 
       m2 = m1;
       m1[-1] = string("negative one");
