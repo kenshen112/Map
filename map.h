@@ -65,7 +65,7 @@ namespace custom
       
       void clear()
       {
-         bst.clear();
+         bst->clear();
       }
       
       //access functions
