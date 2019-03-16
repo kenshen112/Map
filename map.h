@@ -177,7 +177,7 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
 	
 	map::iterator it = bst->find(keyFind);
 
-	if (it != NULL)
+	if (*it != NULL)
 	{
 		return it.second;
 	}
