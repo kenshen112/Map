@@ -33,7 +33,7 @@ void wordCount()
 
    string fileName;
 
-   std::cout << "Whar is the filename to be counted? ";
+   std::cout << "What is the filename to be counted? ";
    std::cin >> fileName;
 
    readFile(words, fileName);
