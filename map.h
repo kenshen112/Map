@@ -175,9 +175,9 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
 {
 	pair<K, V> keyFind;
 	
-	map::iterator it = bst->find(keyFind);
+	map::iterator *it = bst->find(keyFind);
 
-	if (*it != NULL)
+	if (it != nullptr)
 	{
 		return it.second;
 	}
