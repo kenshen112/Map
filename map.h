@@ -194,7 +194,7 @@ V & map<K, V>::operator[] (const K & k) throw(const char *)
  *allows for random access
  *************************************/
 template <class K, class V>
-   V map<K, V>::operator[] (const K & k) throw(const char *)
+ V map<K, V>::operator[] (const K & k) const throw(const char *)
 {
    //see above ^^
 }
