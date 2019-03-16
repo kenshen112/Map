@@ -254,8 +254,10 @@ namespace custom
       if (it != nullptr)
          *it = v;
       else
+      {
          bst.insert(k);
-      
+         numElements++;
+      }
    }
    /************************************
     *INSERT with pair <K, V>
@@ -269,7 +271,10 @@ namespace custom
       if (it != nullptr)
          *it = input;
       else
+      {
          bst.insert(input);
+         numElements++;
+      }
    }
 }
 
