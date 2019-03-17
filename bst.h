@@ -126,7 +126,6 @@ namespace custom
        iterator()
        {
           p = nullptr;
-		  std::cerr << "segfault" << std::endl;
 	   }
 
        iterator(BNode <T> *pNewit)
@@ -141,8 +140,13 @@ namespace custom
 
        iterator operator = (const iterator &rhs)
        {
+		   if (rhs.p == nullptr)
+		   {
+			   return iterator(nullptr);
+		   }
+
           //std::cerr << "iterator assignment operator\n";
-          return this->p = rhs.p;
+          return p = rhs.p;
        }
 
 	   
