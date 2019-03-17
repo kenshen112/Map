@@ -56,11 +56,11 @@ namespace custom
       
       int size() const
       {
-         return bst->size();
+         return numElements;
       }
       bool empty() const
       {
-         return bst->size() == 0;
+         return numElements == 0;
       }
       
       void clear()
@@ -246,20 +246,20 @@ namespace custom
    {
       pair<K, V> keyFind;
       keyFind.first = k;
-      map<K, V>::iterator *it = nullptr;
+      map<K, V>::iterator it;
 
 
-      *it = find(k);
+      it = find(k);
       
-      if (it != nullptr)
+      if (it != iterator(nullptr))
       {		 
 
 
-         return it->getBst().second;
+         return it.getBst().second;
       }
       else
       {
-         bst->insert(keyFind);
+         bst-insert(keyFind);
          return find(keyFind.first).getBst().second;
       }
    }
