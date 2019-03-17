@@ -226,7 +226,7 @@ namespace custom
       std::cerr << "we are in the access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
-      map<K, V>::iterator *it = nullptr;
+      map<K, V>::iterator *it;
 
       std::cerr << "we are about to use find\n";
       *it = find(k);

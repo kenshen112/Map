@@ -888,10 +888,10 @@ v************************************************/
    {
 	   std::cerr << "before if" << std::endl;
 
-	   if (empty())
+	   if (root == nullptr)
 	   {
-		   std::cerr << "nullptr" << std::endl;
-		   return iterator (nullptr);
+              std::cerr << "find nullptr" << std::endl;
+              return iterator (nullptr);
 	   }
 
       for (iterator it = begin(); it != nullptr; it++)
