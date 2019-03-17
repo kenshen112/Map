@@ -112,7 +112,8 @@ namespace custom
       
       pair<K, V>& getBst()
       {
-         return *bsit;
+		  std::cerr << "Getter is called" << std::endl;		  		         
+		  return *bsit;
       }
       
       iterator(const map<K, V>::iterator& it)
@@ -191,10 +192,10 @@ namespace custom
       keyFind.first = k;
       std::cerr << "we made a pair, just wo se could search in bst for it\n";
       
-      map<K, V>::iterator it = bst->find(keyFind);
+	  map<K, V>::iterator it;
       std::cerr << "we assigned a map iterator using bst's find function\n";
       
-      return it;
+      return bst->find(keyFind);
    }
    
    /************************************
@@ -232,9 +233,11 @@ namespace custom
       *it = find(k);
       std::cerr << "we used find and it didn't break\n";
       
-      if (it != nullptr)
+      if (it->getBst().second != V())
       {
          std::cerr << "we found something!\n";
+		 std::cerr << "Second: " << it->getBst().second << std::endl;
+
          return it->getBst().second;
       }
       
@@ -265,8 +268,11 @@ namespace custom
       std::cerr << "we just used find and didn't break\n";
       
       if (it != nullptr)
-      {
+      {		 
+		  std::cerr << "Second: " << it->getBst().first << std::endl;
          std::cerr << "we found a thing!\n";
+
+
          return it->getBst().second;
       }
       else
