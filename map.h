@@ -56,7 +56,7 @@ namespace custom
       
       int size() const
       {
-         return numElements;
+         return bst->size();
       }
       bool empty() const
       {
@@ -272,9 +272,12 @@ namespace custom
    {
       map::iterator *it = bst->find(k);
       
-      if (it != nullptr)
-         *it = v;
-      else
+	  if (it != nullptr)
+	  {
+		  *it = v;
+		  numElements++;
+	  }
+	  else
       {
          bst.insert(k);
          numElements++;
