@@ -142,7 +142,6 @@ namespace custom
        {
 		   if (rhs.p == nullptr)
 		   {
-			   std::cerr << "nullptr return" << std::endl;
 			   return iterator(nullptr);
 		   }
 
@@ -175,7 +174,6 @@ namespace custom
 	   
        T& operator*()
        {
-          std::cerr << "we are in the dereference operator\n";
           if(p)
           {
              return p->data;
@@ -847,27 +845,22 @@ template <class T>
    typename BST<T>::iterator BST<T>::begin()
    {
 
-	   std::cerr << "Begin" << std::endl;
 
       if(root == nullptr)
       {		 
-		  std::cerr << "nullptr" << std::endl;
          return iterator(nullptr);
       }
 
-	  std::cerr << "pNew = root" << std::endl;
 
       BNode <T> *pNew = root;
       
 
       while(pNew->pLeft)
       {
-		  std::cerr << "while Loop" << std::endl;
          pNew = pNew->pLeft;
          
       }
       
-	  std::cerr << "pNew" << std::endl;
 
       return iterator (pNew);
    }
