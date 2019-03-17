@@ -56,7 +56,7 @@ namespace custom
       
       int size() const
       {
-         return bst->size();
+         return bst->size() - 1;
       }
       bool empty() const
       {
