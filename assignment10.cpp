@@ -153,25 +153,25 @@ void testAdd()
       // fill
       cout << "Fill with 10 values\n";
       m1[8]  = string("eight");    //               8
-      std::cerr << "added eight\n";
+//      std::cerr << "added eight\n";
       m1[4]  = string("four");     //          +----+----+
-      std::cerr << "added four\n";
+      //    std::cerr << "added four\n";
       m1[12] = string("twelve");   //          4         12
-      std::cerr << "added twelve\n";
+      // std::cerr << "added twelve\n";
       m1[2]  = string("two");      //       +--+--+   +--+--+
-      std::cerr << "added two\n";
+      //  std::cerr << "added two\n";
       m1[6]  = string("six");      //       2     6   9     13
-      std::cerr << "added six\n";
+      //  std::cerr << "added six\n";
       m1[9]  = string("nine");     //     +-+   +-+   +-+
-      std::cerr << "added nine\n";
+      //  std::cerr << "added nine\n";
       m1[13] = string("thirteen"); //     0     5       11
-      std::cerr << "added thirteen\n";
+      //  std::cerr << "added thirteen\n";
       m1[0]  = string("zero");
-      std::cerr << "added zero\n";
+      // std::cerr << "added zero\n";
       m1[5]  = string("five");
-      std::cerr << "added five\n";
+      // std::cerr << "added five\n";
       m1[11] = string("eleven");
-      std::cerr << "added eleven\n";
+//      std::cerr << "added eleven\n";
 
       m2 = m1;
       m1[-1] = string("negative one");
@@ -266,21 +266,21 @@ void testIterate()
       cout << "\tContents: " << m1                          << endl;
 
       // copy the map and destroy the original
-      std::cerr << "this is m1" << m1 << endl;
-      std::cerr << "this is m2" << m2 << endl;
+      //    std::cerr << "this is m1" << m1 << endl;
+      // std::cerr << "this is m2" << m2 << endl;
       m2 = m1;
-      std::cerr << "copied m1 into m2 see:" << m2 << endl;
-      std::cerr << "this is m1: " << m1 << endl;
-      std::cerr << "m1: " << &m1 << endl;
-      std::cerr << "m2: " << &m2 << endl;
+      //std::cerr << "copied m1 into m2 see:" << m2 << endl;
+      // std::cerr << "this is m1: " << m1 << endl;
+      //std::cerr << "m1: " << &m1 << endl;
+      //std::cerr << "m2: " << &m2 << endl;
       m1.clear();
-      std::cerr << "m1 address: " << &m1 << endl;
-      std::cerr << "m2 address: " << &m2 << endl;
-      std::cerr << "cleared m1. see: " << m1 << endl;
-      std::cerr << "shouldn't change m2: " << m2 << endl;
+      //std::cerr << "m1 address: " << &m1 << endl;
+      //std::cerr << "m2 address: " << &m2 << endl;
+      //std::cerr << "cleared m1. see: " << m1 << endl;
+      //std::cerr << "shouldn't change m2: " << m2 << endl;
       m1[string("the answer")] = 42;
-      std::cerr << "added 42 to m1" << m1 << endl;
-      std::cerr << "should NOT change m2: " << m2 << endl;
+      //std::cerr << "added 42 to m1" << m1 << endl;
+      //std::cerr << "should NOT change m2: " << m2 << endl;
       cout << "Copy the map and destroy the original\n";
       cout << "\tEmpty?    " << (m2.empty() ? "yes" : "no") << endl;
       cout << "\tCount:    " << m2.size()                   << endl;

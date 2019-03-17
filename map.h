@@ -36,7 +36,7 @@ namespace custom
       //copy constructor
       map(const map <K, V> & rhs)
       {
-         std::cerr << "in copy constructor\n";
+//         std::cerr << "in copy constructor\n";
          bst =  new BST<custom::pair<K, V>>(*(rhs.bst));
          /*bst = rhs->bst;*/
          numElements = rhs.numElements;
@@ -44,7 +44,7 @@ namespace custom
       //assignment operator
       map & operator=(const map <K, V> & rhs)
          {
-            std::cerr << "in assignment operator\n";
+            //          std::cerr << "in assignment operator\n";
             bst =  new BST<custom::pair<K, V>>(*(rhs.bst));
             /*bst = rhs->bst;*/
             numElements = rhs.numElements;
@@ -225,7 +225,7 @@ namespace custom
    template <class K, class V>
       V & map<K, V>::operator[] (const K & k) throw(const char *)
    {
-      std::cerr << "in nonconstant access operator\n";
+      //std::cerr << "in nonconstant access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
       map<K, V>::iterator it;
@@ -255,7 +255,7 @@ namespace custom
    template <class K, class V>
       V map<K, V>::operator[] (const K & k) const throw(const char *)
    {
-      std::cerr << "in constant access operator\n";
+      //std::cerr << "in constant access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
       map<K, V>::iterator it;
