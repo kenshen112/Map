@@ -1,13 +1,23 @@
 ###############################################################
 # Program:
 #     Assignment 10, Map
-#     Brother XXXXX, CS 235
+#     Brother Kirby, CS 235
 # Author:
-#     <your name here>
+#     Tim O'Barr
+#     Jessica Smith
+#     Ken Smith
 # Summary:
-#     <put a descriptoin here>
+#     Implements a mostly successful Map ADT
 # Time:
-#     <how long did it take to complete this program?>
+#     Group: 8 Hours
+#     Solo: 
+#          Tim 10 Hours
+#          Jessica 8 Hours
+#          Ken 8 Hours
+# Hardest Part:
+#          Tim: going for 4 hours on one seg fault in find/insert, and tackeled many other errors for the rest of the time
+#          Jessica: working out pseudocode to actual code with insert and access.
+#          Ken: fixing the BST from last week, so we could get started on this week.
 ###############################################################
 
 ##############################################################
