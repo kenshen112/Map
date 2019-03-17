@@ -36,14 +36,14 @@ namespace custom
       //copy constructor
       map(const map <K, V> & rhs)
       {
-         bst = rhs.bst;
+         *bst = rhs->bst;
          numElements = rhs.numElements;
       }
       //assignment operator
       map & operator=(const map <K, V> & rhs)
          {
             bst = rhs.bst;
-            
+            numElements = rhs.numElements;
             return *this;
          }
       //destructor
@@ -66,6 +66,7 @@ namespace custom
       void clear()
       {
          bst->clear();
+         numElements = 0;
       }
       
       //access functions
