@@ -175,7 +175,7 @@ namespace custom
 	   
        T& operator*()
        {
-          //std::cerr << "we are in the dereference operator\n";
+          std::cerr << "we are in the dereference operator\n";
           if(p)
           {
              return p->data;
@@ -886,17 +886,14 @@ v************************************************/
    template <class T>
    typename BST<T>::iterator BST<T>::find(T itemToFind)
    {
-	   std::cerr << "before if" << std::endl;
 
 	   if (root == nullptr)
 	   {
-              std::cerr << "find nullptr" << std::endl;
               return iterator (nullptr);
 	   }
 
       for (iterator it = begin(); it != nullptr; it++)
       {
-		  std::cerr << "for loop" << std::endl;
 
          if (*it == itemToFind)
          {
@@ -904,9 +901,9 @@ v************************************************/
          }
       }
       
-      return nullptr;
+      return end();
    }
    
-} // namespace custom
+} 
 
 #endif // BST_H
