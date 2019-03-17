@@ -266,9 +266,21 @@ void testIterate()
       cout << "\tContents: " << m1                          << endl;
 
       // copy the map and destroy the original
+      std::cerr << "this is m1" << m1 << endl;
+      std::cerr << "this is m2" << m2 << endl;
       m2 = m1;
+      std::cerr << "copied m1 into m2 see:" << m2 << endl;
+      std::cerr << "this is m1: " << m1 << endl;
+      std::cerr << "m1: " << &m1 << endl;
+      std::cerr << "m2: " << &m2 << endl;
       m1.clear();
+      std::cerr << "m1 address: " << &m1 << endl;
+      std::cerr << "m2 address: " << &m2 << endl;
+      std::cerr << "cleared m1. see: " << m1 << endl;
+      std::cerr << "shouldn't change m2: " << m2 << endl;
       m1[string("the answer")] = 42;
+      std::cerr << "added 42 to m1" << m1 << endl;
+      std::cerr << "should NOT change m2: " << m2 << endl;
       cout << "Copy the map and destroy the original\n";
       cout << "\tEmpty?    " << (m2.empty() ? "yes" : "no") << endl;
       cout << "\tCount:    " << m2.size()                   << endl;
