@@ -60,7 +60,7 @@ namespace custom
       }
       bool empty() const
       {
-         return bst->size == 0;
+         return bst->size() == 0;
       }
       
       void clear()
