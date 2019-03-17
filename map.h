@@ -56,7 +56,7 @@ namespace custom
       
       int size() const
       {
-         return bst->size() - 1;
+         return bst->size();
       }
       bool empty() const
       {
@@ -232,6 +232,7 @@ namespace custom
       else
       {
          bst->insert(keyFind);
+         numElements++;
          return find(keyFind.first).getBst().second;
       }
    }
