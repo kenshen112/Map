@@ -126,7 +126,8 @@ namespace custom
        iterator()
        {
           p = nullptr;
-       }
+		  std::cerr << "segfault" << std::endl;
+	   }
 
        iterator(BNode <T> *pNewit)
        {
@@ -844,12 +845,16 @@ template <class T>
 	   std::cerr << "Begin" << std::endl;
 
       if(root == nullptr)
-      {
+      {		 
+		  std::cerr << "nullptr" << std::endl;
          return iterator(nullptr);
-		 std::cerr << "nullptr" << std::endl;
       }
+
+	  std::cerr << "pNew = root" << std::endl;
+
       BNode <T> *pNew = root;
       
+
       while(pNew->pLeft)
       {
 		  std::cerr << "while Loop" << std::endl;
@@ -874,8 +879,16 @@ template <class T>
 * Searches the Binary Search Tree for an item.
 v************************************************/
    template <class T>
-      typename BST<T>::iterator BST<T>::find(T itemToFind)
+   typename BST<T>::iterator BST<T>::find(T itemToFind)
    {
+	   std::cerr << "before if" << std::endl;
+
+	   if (empty())
+	   {
+		   std::cerr << "nullptr" << std::endl;
+		   return iterator (nullptr);
+	   }
+
       for (iterator it = begin(); it != nullptr; it++)
       {
 		  std::cerr << "for loop" << std::endl;

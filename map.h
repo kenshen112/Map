@@ -30,7 +30,7 @@ namespace custom
       //default constructor, all constructor's should be inline in C++ Tim
       map()
       {
-         bst = nullptr;
+         bst = new BST<custom::pair<K, V>>();
          numElements = 0;
       }
       //copy constructor
@@ -42,6 +42,9 @@ namespace custom
       //assignment operator
       map & operator=(const map <K, V> & rhs)
          {
+
+		  std::cerr << "assignment" << std::endl;
+
             bst = rhs.bst;
             
             return *this;
@@ -120,6 +123,8 @@ namespace custom
       //operators: =, ++, --, *, ==, !=
       iterator operator = (const iterator &rhs)
          {
+		  std::cerr << "assign" << std::endl;
+
             this->bsit = rhs.bsit;
             return *this;
          }
@@ -221,7 +226,7 @@ namespace custom
       std::cerr << "we are in the access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
-      map<K, V>::iterator *it;
+      map<K, V>::iterator *it = nullptr;
 
       std::cerr << "we are about to use find\n";
       *it = find(k);
@@ -251,7 +256,10 @@ namespace custom
       std::cerr << "we are in the access operator\n";
       pair<K, V> keyFind;
       keyFind.first = k;
-      map<K, V>::iterator *it;
+	  std::cout << "before iterator" << std::endl;
+      map<K, V>::iterator *it = nullptr;
+
+	  std::cout << "Bad segfault, Bad!" << std::endl;
 
       *it = find(k);
       std::cerr << "we just used find and didn't break\n";
