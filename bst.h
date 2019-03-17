@@ -142,6 +142,7 @@ namespace custom
        {
 		   if (rhs.p == nullptr)
 		   {
+			   std::cerr << "nullptr return" << std::endl;
 			   return iterator(nullptr);
 		   }
 
