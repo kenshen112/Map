@@ -46,61 +46,61 @@ namespace custom
          // deleteBinaryTree(root);
          // numElements = 0;
       }
-      BST(const BST <T> *rhs)
-       {
-          if(rhs == nullptr)
-          {
-             return;
-          }
-          
-               
-          // push the head of the tree onto the queue
-          queue <BNode <T> *> q;
-          
-          q.push(rhs->root);
-          // while there are still sub-trees to visit…
-          while (!q.empty())
-          {
-             // add the left and right sub-tree to the queue
-             if (q.front()->pLeft != nullptr)
-                q.push(q.front()->pLeft);
-             if (q.front()->pRight != nullptr)
-                q.push(q.front()->pRight);
-             // visit the current node
-             insert(q.front()->data);
-             q.pop();
-          }
-       }
+	  BST(const BST <T> *rhs)
+	  {
+		  if (rhs == nullptr)
+		  {
+			  return;
+		  }
 
-      BST operator= (const BST <T> & rhs) throw (const char *)
-      {
-         
-         if(rhs.root == nullptr)
-         {
-            return nullptr;
-         }
-         
 
-         // push the head of the tree onto the queue
-         queue <BNode <T> *> q;
+		  // push the head of the tree onto the queue
+		  queue <BNode <T> *> q;
 
-         q.push(rhs.root);
-         // while there are still sub-trees to visit…
-         while (!q.empty())
-         {
-            // add the left and right sub-tree to the queue
-            if (q.front()->pLeft != nullptr)
-               q.push(q.front()->pLeft);
-            if (q.front()->pRight != nullptr)
-               q.push(q.front()->pRight);
-            // visit the current node
-            insert(q.front()->data);
-            q.pop();
-         }
-         
-         return *this;
-           
-      }
+		  q.push(rhs->root);
+		  // while there are still sub-trees to visit…
+		  while (!q.empty())
+		  {
+			  // add the left and right sub-tree to the queue
+			  if (q.front()->pLeft != nullptr)
+				  q.push(q.front()->pLeft);
+			  if (q.front()->pRight != nullptr)
+				  q.push(q.front()->pRight);
+			  // visit the current node
+			  insert(q.front()->data);
+			  q.pop();
+		  }
+	  }
+
+	  BST operator= (const BST <T> & rhs) throw (const char *)
+	  {
+
+		  if (rhs.root == nullptr)
+		  {
+			  return nullptr;
+		  }
+
+
+		  // push the head of the tree onto the queue
+		  queue <BNode <T> *> q;
+
+		  q.push(rhs.root);
+		  // while there are still sub-trees to visit…
+		  while (!q.empty())
+		  {
+			  // add the left and right sub-tree to the queue
+			  if (q.front()->pLeft != nullptr)
+				  q.push(q.front()->pLeft);
+			  if (q.front()->pRight != nullptr)
+				  q.push(q.front()->pRight);
+			  // visit the current node
+			  insert(q.front()->data);
+			  q.pop();
+		  }
+
+		  return *this;
+
+	  }
       
       int size()   { return numElements; }
       bool empty() { return numElements == 0; }
@@ -109,7 +109,7 @@ namespace custom
       void erase(iterator it);
       void deleteNode(BNode <T> *nodeToDelete, bool isRight);
       void deleteBinaryTree(BNode <T> *deletor);
-      void copyBinaryTree(BNode<T> *copySource, BNode <T> *copyDest);
+      void copyBinaryTree(const BNode<T> * pSrc, BNode<T> * pDest);
       void balence(BST<T>* tree);
 
    };
@@ -430,17 +430,51 @@ template <class T>
       
       deleteBinaryTree(deletor->pLeft);
       deleteBinaryTree(deletor->pRight);
-
-      delete deletor;
-
       deletor = nullptr;
-      if(deletor == NULL)
-      {
-         //std::cerr << "its null now\n";
-      }
-
-
+      delete deletor;
    }   
+
+   /**********************************************
+ * COPY BINARY TREE
+ * Copy pSrc->pRight to pDest->pRight and
+ * pSrc->pLeft onto pDest->pLeft
+ *********************************************/
+   template <class T>
+   void BST <T> ::copyBinaryTree(const BNode<T> * pSrc, BNode<T> * pDest) 
+   {	   
+	   std::cerr << "copyBTree" << std::endl;
+
+	   BNode<T> * p = nullptr;
+	   assert(pSrc && pDest);
+	   assert(pDest->pLeft == nullptr && pDest->pRight == nullptr);
+
+
+	   try
+	   {
+		   if (pSrc->pRight)
+		   {			   std::cerr << "pRight copy" << std::endl;
+
+			   p = new BNode<T>(pSrc->pRight->data);
+			   p->red = pSrc->pRight->red;
+			   pDest->pRight = p;
+			   copyBinaryTree(pSrc->pRight, pDest->pRight);
+		   }
+		   if (pSrc->pLeft)
+		   {			   std::cerr << "pLeft copy" << std::endl;
+
+			   p = new BNode<T>(pSrc->pLeft->data);
+			   p->red = pSrc->pLeft->red;
+			   pDest->pLeft = p;
+			   copyBinaryTree(pSrc->pLeft, pDest->pLeft);
+		   }
+	   }
+	   catch (...)
+	   {
+		   throw "ERROR: Unable to allocate a node";
+	   }
+   }
+
+
 
    
    template<class T>

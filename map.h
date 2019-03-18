@@ -33,26 +33,23 @@ namespace custom
          bst = new BST<custom::pair<K, V>>();
          numElements = 0;
       }
-      //copy constructor
-      map(const map <K, V> & rhs)
-      {
-//         std::cerr << "in copy constructor\n";
-         bst =  new BST<custom::pair<K, V>>(*(rhs.bst));
-         /*bst = rhs->bst;*/
-         numElements = rhs.numElements;
-      }
-      //assignment operator
-      map & operator=(const map <K, V> & rhs)
-         {
-            //          std::cerr << "in assignment operator\n";
-            bst =  new BST<custom::pair<K, V>>(*(rhs.bst));
-            /*bst = rhs->bst;*/
-            numElements = rhs.numElements;
-         }
-      /*     bst = rhs.bst;
-            numElements = rhs.numElements;
-            return *this;
-            }*/
+	  //copy constructor
+	  map(const map <K, V> & rhs)
+	  {
+		  //         std::cerr << "in copy constructor\n";
+		  bst = new BST<custom::pair<K, V>>(*(rhs.bst));
+		  /*bst = rhs->bst;*/
+		  numElements = rhs.numElements;
+	  }
+
+	  map & operator=(const map <K, V> & rhs)
+	  {
+		  //          std::cerr << "in assignment operator\n";
+		  bst = new BST<custom::pair<K, V>>(*(rhs.bst));
+		  /*bst = rhs->bst;*/
+		  numElements = rhs.numElements;
+	  }
+      
       //destructor
       ~map()
       {
